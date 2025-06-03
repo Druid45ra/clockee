@@ -1,16 +1,3 @@
-buildscript {
-    ext.kotlin_version = '1.3.50'
-    repositories {
-        google()
-        jcenter()
-    }
-
-    dependencies {
-        classpath 'com.android.tools.build:gradle:4.1.0'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-    }
-}
-
 allprojects {
     repositories {
         google()
@@ -18,12 +5,9 @@ allprojects {
     }
 }
 
-rootProject.buildDir = '../build'
-subprojects {
-    project.buildDir = "${rootProject.buildDir}/${project.name}"
-    project.evaluationDependsOn(':app')
+
+plugins {
+    id "dev.flutter.flutter-gradle-plugin" version "1.0.0"
 }
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
-}
+rootProject.name = "clockee"
